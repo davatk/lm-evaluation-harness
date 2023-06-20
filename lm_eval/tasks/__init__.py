@@ -60,6 +60,7 @@ from . import xwinograd
 from . import pawsx
 from . import xnli
 from . import mgsm
+from . import penn_treebank
 
 ########################################
 # Translation tasks
@@ -121,6 +122,8 @@ TASK_REGISTRY = {
     # multilingual lambada
     **lambada_multilingual.construct_tasks(),
     "wikitext": wikitext.WikiText,
+    "wikitext103": wikitext.WikiText103,
+    "penn_treebank": penn_treebank.PennTreebank,
     # "cbt-cn": cbt.CBTCN, # disabled pending context length fix
     # "cbt-ne": cbt.CBTNE, # disabled pending context length fix
     "piqa": piqa.PiQA,

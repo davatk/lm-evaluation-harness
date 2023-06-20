@@ -5,8 +5,6 @@ https://arxiv.org/pdf/1609.07843.pdf
 The WikiText language modeling dataset is a collection of over 100 million tokens
 extracted from the set of verified Good and Featured articles on Wikipedia.
 
-NOTE: This `Task` is based on WikiText-2.
-
 Homepage: https://www.salesforce.com/products/einstein/ai-research/the-wikitext-dependency-language-modeling-dataset/
 """
 import re
@@ -63,6 +61,43 @@ class WikiText(PerplexityTask):
     VERSION = 1
     DATASET_PATH = "EleutherAI/wikitext_document_level"
     DATASET_NAME = "wikitext-2-raw-v1"
+
+    def has_training_docs(self):
+        return True
+
+    def has_validation_docs(self):
+        return True
+
+    def has_test_docs(self):
+        return True
+
+    def training_docs(self):
+        return map(self._process_doc, self.dataset["train"])
+
+    def validation_docs(self):
+        return map(self._process_doc, self.dataset["validation"])
+
+    def test_docs(self):
+        return map(self._process_doc, self.dataset["test"])
+
+    def _process_doc(self, doc):
+        return doc["page"]
+
+    def doc_to_target(self, doc):
+        return wikitext_detokenizer(doc)
+
+    def should_decontaminate(self):
+        return True
+
+    def count_words(self, doc):
+        # count number of words in *original doc before detokenization*
+        return len(re.split(r"\s+", doc))
+
+
+class WikiText103(PerplexityTask):
+    VERSION = 0
+    DATASET_PATH = "EleutherAI/wikitext_document_level"
+    DATASET_NAME = "wikitext-103-raw-v1"
 
     def has_training_docs(self):
         return True
