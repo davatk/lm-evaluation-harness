@@ -36,18 +36,20 @@ TASKS = ",".join(['wikitext', 'penn_treebank', 'lambada_standard', 'mnli'])
 
 
 if __name__ == '__main__':
+    if not os.path.exists(RESULTS_DIR):
+        os.makedirs(RESULTS_DIR)
     for model in MODELS:
         model_fname = model.replace('/', '_')
         try:
-            subprocess.run(['python3', 'main.py', '--model', 'hf-causal-experimental', '--model_args',
-                            f'pretrained={model},use_accelerate=True', '--tasks', TASKS, '--batch_size',
-                            'auto', '--write_out', '--output_path', f'{RESULTS_DIR}/{model_fname}.json'],
-                            check=True, capture_output=True)
+            subprocess.run(['python3', 'main.py', '--model', 'hf-causal-experimental',
+                            '--model_args', f'pretrained={model},use_accelerate=True', '--tasks',
+                            TASKS, '--batch_size', 'auto', '--write_out', '--output_path',
+                            f'{RESULTS_DIR}/{model_fname}.json'], check=True, capture_output=True)
         except subprocess.CalledProcessError as e:
             with open(f'{RESULTS_DIR}/errors.log', 'a') as f:
                 f.write(f'=== {model} ===')
-                f.write(e.stdout)
-                f.write(e.stderr)
+                f.write(str(e.stdout))
+                f.write(str(e.stderr))
     # combine results into single file
     results = []
     for output_fname in os.listdir(RESULTS_DIR):
