@@ -25,22 +25,22 @@ class PennTreebank(PerplexityTask):
     DATASET_NAME = None
 
     def has_training_docs(self):
-        return True
+        return False
 
     def has_validation_docs(self):
-        return True
+        return False
 
     def has_test_docs(self):
         return True
 
     def training_docs(self):
-        return map(self._process_doc, self.dataset["train"])
+        pass
 
     def validation_docs(self):
-        return map(self._process_doc, self.dataset["validation"])
+        pass
 
     def test_docs(self):
-        return map(self._process_doc, self.dataset["test"])
+        return [" ".join(map(self._process_doc, self.dataset["test"]))]
 
     def _process_doc(self, doc):
         return doc["sentence"]
