@@ -41,7 +41,7 @@ if __name__ == '__main__':
         try:
             subprocess.run(['python3', 'main.py', '--model', 'hf-causal-experimental', '--model_args',
                             f'pretrained={model},use_accelerate=True', '--tasks', TASKS, '--batch_size',
-                            '1', '--write_out', '--output_path', f'{RESULTS_DIR}/{model_fname}.json']
+                            'auto', '--write_out', '--output_path', f'{RESULTS_DIR}/{model_fname}.json'],
                             check=True, capture_output=True)
         except subprocess.CalledProcessError as e:
             with open(f'{RESULTS_DIR}/errors.log', 'a') as f:
