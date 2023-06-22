@@ -4,10 +4,15 @@ import os
 
 RESULTS_DIR = "output"
 
+
 MODELS = [
     "huggyllama/llama-30b",
     "huggyllama/llama-13b",
     "huggyllama/llama-7b",
+    "decapoda-research/llama-7b-hf",
+    "decapoda-research/llama-13b-hf",
+    "decapoda-research/llama-30b-hf",
+    "decapoda-research/llama-65b-hf",
     "EleutherAI/pythia-70m",
     "EleutherAI/pythia-160m",
     "EleutherAI/pythia-410m",
@@ -16,6 +21,11 @@ MODELS = [
     "EleutherAI/pythia-2.8b",
     "EleutherAI/pythia-6.9b",
     "EleutherAI/pythia-12b",
+    "EleutherAI/gpt-neo-1.3B",
+    "EleutherAI/gpt-neo-2.7B",
+    "EleutherAI/gpt-neo-125m",
+    "EleutherAI/gpt-neox-20b",
+    "EleutherAI/gpt-j-6b",
     "bigscience/bloom-560m",
     "bigscience/bloom-1b1",
     "bigscience/bloom-1b7",
