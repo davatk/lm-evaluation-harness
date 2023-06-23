@@ -20,18 +20,29 @@ MODELS = [
     "EleutherAI/pythia-410m",
     "EleutherAI/pythia-6.9b",
     "EleutherAI/pythia-70m",
-    "THUDM/glm-10b",
-    "THUDM/glm-2b",
-    "bigscience/bloom",
+    
+    # could not get to work, could be a versioning issue
+    #"THUDM/glm-10b,trust_remote_code=True",
+    #"THUDM/glm-2b,trust_remote_code=True",
+    
     "bigscience/bloom-1b1",
     "bigscience/bloom-1b7",
     "bigscience/bloom-3b",
     "bigscience/bloom-560m",
     "bigscience/bloom-7b1",
-    "decapoda-research/llama-13b-hf",
-    "decapoda-research/llama-30b-hf",
-    "decapoda-research/llama-65b-hf",
-    "decapoda-research/llama-7b-hf",
+    
+    # https://github.com/huggingface/transformers/issues/22222#issuecomment-1525580655
+    # "decapoda-research/llama-13b-hf",
+    # "decapoda-research/llama-30b-hf",
+    # "decapoda-research/llama-65b-hf",
+    # "decapoda-research/llama-7b-hf",
+    
+    # more Llama, to double check
+    "elinas/llama-7b-hf-transformers-4.29",
+    "elinas/llama-13b-hf-transformers-4.29",
+    "elinas/llama-30b-hf-transformers-4.29",
+    "elinas/llama-65b-hf-transformers-4.29",
+    
     "facebook/opt-1.3b",
     "facebook/opt-125m",
     "facebook/opt-13b",
@@ -43,6 +54,7 @@ MODELS = [
     "huggyllama/llama-13b",
     "huggyllama/llama-30b",
     "huggyllama/llama-7b",
+    "mosaicml/mpt-7b,trust_remote_code=True",
 ]
 
 TASKS = ",".join(['wikitext', 'penn_treebank', 'lambada_standard', 'mnli'])

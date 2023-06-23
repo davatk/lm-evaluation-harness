@@ -1,4 +1,4 @@
-Pretty hacky addition of Penn Treebank, and some code to run the benchmarks. Entrypoint here is `evaluate.py`. You should be able to clone this repo, run `pip install -e .` and then `python evaluate.py`.
+Pretty hacky addition of Penn Treebank, and some code to run the benchmarks. Entrypoint here is `evaluate.py`, which will let you choose the models and tasks. You should be able to clone this repo, run `pip install einops && pip install -e .` and then `python evaluate.py`.
 
 
 # Possible Problems
